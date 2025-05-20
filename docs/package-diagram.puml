@@ -1,0 +1,55 @@
+@startuml
+package "Website" {
+    package "Navbar" {
+        class Navbar {
+            +render()
+            +handleNavigation()
+        }
+    }
+
+    package "Pages" {
+        class HomePage {
+            +renderContent()
+        }
+        class PlotPage {
+            +renderPlot()
+        }
+        class CharactersPage {
+            +renderCharacters()
+            +hoverCardEffect()
+        }
+        class GalleryPage {
+            +renderGallery()
+            +hoverImageEffect()
+        }
+        class AuthorPage {
+            +renderAuthorDetails()
+        }
+    }
+
+    package "Assets" {
+        class Images {
+            +display()
+            +zoomEffect()
+        }
+        class Fonts {
+            +applyFontStyle()
+        }
+        class HoverCard {
+            +displayDetails()
+            +fadeEffect()
+        }
+    }
+
+    Navbar --> HomePage : "Navigates to"
+    Navbar --> PlotPage : "Navigates to"
+    Navbar --> CharactersPage : "Navigates to"
+    Navbar --> GalleryPage : "Navigates to"
+    Navbar --> AuthorPage : "Navigates to"
+
+    GalleryPage --> Images : "Uses"
+    Images --> Fonts : "Styled with"
+    CharactersPage --> HoverCard : "Displays details on hover"
+    HoverCard --> Fonts : "Styled with"
+}
+@enduml

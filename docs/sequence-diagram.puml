@@ -1,0 +1,18 @@
+@startuml
+actor User
+boundary Navbar
+control Router
+entity ContentBox
+
+User -> Navbar: Click a link
+Navbar -> Router: Route to corresponding page
+Router -> ContentBox: Render dynamic content
+
+loop User hovers over content
+    User -> ContentBox: Hover on images
+    ContentBox -> User: Apply effects (e.g., grayscale, animations)
+end
+
+User -> ContentBox: Scroll through content
+ContentBox --> User: Display adjusted layout
+@enduml

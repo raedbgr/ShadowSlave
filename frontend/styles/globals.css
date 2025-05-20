@@ -1,0 +1,244 @@
+*{
+  margin: 0;
+  padding: 0;
+  color: #EAEAEA;
+}
+
+@font-face {
+  font-family: 'DMC5';
+  src: url('/fonts/DMC5Font.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'futhark';
+  src: url('/fonts/RUNE.TTF') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Apply fixed background image */
+body {
+  background-image: url('/assets/background.jpg'); /* Replace with your image path */
+  background-size: cover; /* Ensures the image covers the entire page */
+  background-repeat: no-repeat; /* Prevents tiling */
+  background-attachment: fixed; /* Makes the background fixed during scrolling */
+  background-position: center; /* Centers the image */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.content-box {
+  width: 80%;
+  margin: 50px auto;
+  background-color: rgba(28, 28, 31, 0.8); /* Semi-transparent background */
+  border-radius: 15px; /* Rounded corners */
+  padding: 20px;
+  box-shadow: 0 4px 15px #FFD700; /* Shadow for a 3D effect */
+  color: #EAEAEA;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.content-box h1{
+  font-family: futhark;
+  font-size: 55px ;
+  color:black;
+  text-shadow: 0 4px 4px #FFD700;   
+}
+
+.content-box h2 {
+  font-family: DMC5;   
+  font-size: 30px;
+}
+.content-box h3 {
+  font-family: DMC5;  
+  font-size: 30px;
+}
+
+.images img {
+  width: 20%;
+  margin: 20px;
+  filter: grayscale(100%); /* Makes the image black and white */
+  transition: filter 0.3s ease-in-out; /* Smooth transition for hover effect */
+  cursor: pointer;
+}
+
+.images img:hover {
+  filter: grayscale(0%); /* Restores the original color on hover */
+  cursor: pointer;
+}
+
+.quote-img {
+  width: 60%;
+  cursor: pointer;
+}
+
+.quote {
+  display: flex;
+  margin-left: 25%;
+  margin-right: 25%;
+  font-family: DMC5;
+}
+
+.quote h6 {
+  font-family: DMC5;
+  font-size: 50px;
+  color: #FFD700;
+  text-align: center;
+}
+
+.space {
+  margin: 20px;
+}
+
+.fading-line {
+  height: 2px; /* Thickness of the line */
+  background: linear-gradient(to right, transparent, #FFD700, transparent); /* Fades at edges */
+  margin: 20px auto; /* Centers the line with some spacing */
+  width: 80%; /* Adjusts the line width */
+}
+.profile-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-group label {
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.input-group input {
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: none;
+  background-color: #2a2a2a;
+  color: #EAEAEA;
+}
+
+.image-upload input {
+  padding: 0.5rem 0;
+  color: #EAEAEA;
+}
+
+.reset-button {
+  padding: 0.75rem;
+  background-color: #3a3aff;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.reset-button:hover {
+  background-color: #2a2ad9;
+}
+
+.image-preview {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.image-preview img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid #555;
+  display: block;
+  margin: 0 auto 0.5rem;
+}
+
+.remove-image-button {
+  background-color: #e74c3c;
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background-color 0.2s ease;
+}
+
+.remove-image-button:hover {
+  background-color: #c0392b;
+}
+
+/* Text headers inside content-box */
+.content-box h2 {
+  font-family: DMC5;
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: #FFD700;
+  text-shadow: 1px 1px 4px #000;
+}
+
+/* Login form */
+.register-form {
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  align-items: center;
+}
+
+/* Input fields */
+.register-form input {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: none;
+  background-color: #2a2a2a;
+  color: #EAEAEA;
+  font-size: 16px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.6);
+  transition: border 0.3s, box-shadow 0.3s;
+}
+
+.register-form input:focus {
+  outline: none;
+  border: 1px solid #FFD700;
+  box-shadow: 0 0 8px rgba(255, 215, 0, 0.4);
+}
+
+/* Space element */
+.space {
+  margin: 25px 0;
+}
+.register-form button[type="submit"] {
+  background-color: #FFD700; /* Gold background */
+  color: #1c1c1f; /* Dark text for contrast */
+  font-family: DMC5;
+  font-size: 18px;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(255, 215, 0, 0.4); /* Subtle glow */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-top: 10px;
+}
+
+.register-form button[type="submit"]:hover {
+  background-color: #e6c200; /* Slightly deeper gold */
+  transform: translateY(-2px); /* Hover lift effect */
+  box-shadow: 0 6px 14px rgba(255, 215, 0, 0.6);
+}
+
+.register-form button[type="submit"]:active {
+  transform: scale(0.97); /* Press effect */
+  box-shadow: 0 3px 8px rgba(255, 215, 0, 0.3);
+}

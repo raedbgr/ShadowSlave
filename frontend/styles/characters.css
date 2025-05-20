@@ -1,0 +1,138 @@
+.ch-images {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 80%;
+    margin: auto;
+}
+
+.ch-images img {
+    width: 100%;
+    height: auto;
+    max-height: 400px;
+    object-fit: cover;
+    /* filter: grayscale(100%); */
+    transition: filter 0.3s ease-in-out;
+    /* Smooth transition for hover effect */
+    cursor: pointer;
+}
+
+.ch-images img:hover {
+    filter: grayscale(0%);
+    /* Restores the original color on hover */
+    cursor: pointer;
+}
+
+.ch-box {
+    font-family: DMC5;
+    font-size: 24px;
+    border: 2px solid #FFD700;
+    /* Golden border */
+    border-radius: 10px;
+    /* Rounded corners */
+    padding: 0px;
+    /* Space inside the box */
+    text-align: center;
+    /* Centers text and image */
+    margin: 10px;
+    /* Space between boxes */
+    width: fit-content;
+    /* Adjusts the box size to fit content */
+    background-color: rgba(28, 28, 31, 0.8);
+    /* Semi-transparent background for contrast */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    /* Optional shadow for 3D effect */
+    display: flex;
+    flex-direction: column;
+    /* Stacks text and image vertically */
+    align-items: center;
+    /* Centers content horizontally */
+    position: relative;
+    /* Set relative positioning for the hover effect */
+    overflow: hidden;
+    /* Ensures the hover card doesn't exceed the box boundaries */
+}
+
+.ch-box img {
+    width: 100%;
+    /* Make the image fill the width of the box */
+    height: 100%;
+    /* Make the image fill the height of the box */
+    object-fit: cover;
+    /* Ensures the image covers the box while maintaining aspect ratio */
+    transition: filter 0.3s ease-in-out;
+    /* Smooth transition for hover effect */
+}
+
+@keyframes glow {
+    0% {
+        text-shadow: 0 0 5px #FFD700, 0 0 10px #FFD700, 0 0 20px #FFD700, 0 0 30px #FFD700;
+    }
+
+    50% {
+        text-shadow: 0 0 10px #FFD700, 0 0 20px #FFD700, 0 0 40px #FFD700, 0 0 60px #FFD700;
+    }
+
+    100% {
+        text-shadow: 0 0 5px #FFD700, 0 0 10px #FFD700, 0 0 20px #FFD700, 0 0 30px #FFD700;
+    }
+}
+
+.ch-box p {
+    font-family: DMC5;
+    font-size: 24px;
+    color: #FFD700;
+    animation: glow 2s infinite;
+    /* Applies the glow animation infinitely */
+}
+
+/* Add hover card effect */
+
+.ch-box:hover img {
+    filter: grayscale(0%);
+    /* Highlight the image on hover */
+    transition: all 0.3s ease-in-out;
+    /* Smooth transition for hover effects */
+}
+
+.ch-box::after {
+    content:
+        attr(data-name) "\A" "\A"
+        attr(data-true-name) "\A" "\A"
+        attr(data-age) "\A" "\A"
+        attr(data-status) "\A" "\A"
+        attr(data-rank) "\A" "\A"
+        attr(data-class) "\A" "\A"
+        attr(data-aspect) "\A" "\A"
+        attr(data-flaw);
+    /* Displays the character's name */
+    white-space: pre-line;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    /* Position at the bottom */
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    /* Semi-transparent black background */
+    color: #FFD700;
+    /* Golden text color */
+    font-family: DMC5;
+    font-size: 18px;
+    padding: 10px;
+    text-align: center;
+    transform: translateY(100%);
+    /* Initially hide below the box */
+    transition: transform 0.3s ease-in-out;
+    /* Smooth slide-up effect */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Vertically center the text inside */
+    align-items: center;
+}
+
+.ch-box:hover::after {
+    transform: translateY(0);
+    /* Slide up to become visible */
+}
