@@ -9,7 +9,7 @@ export default function RootLayout({ children }) {
       <body>
         <Navbar />
         {children}
-        {/* <ShadowSlaveChatbot /> */}
+        <ShadowSlaveChatbot />
       </body>
     </html>
   );

@@ -2,7 +2,7 @@ export async function POST(req) {
   try {
     const { userMessage } = await req.json();
     
-    const response = await fetch('http://localhost:11434/api/chat', {
+    const response = await fetch('http://127.0.0.1:11434/api/chat', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -12,7 +12,7 @@ export async function POST(req) {
         messages: [
           {
             role: "system",
-            content: "You are an expert on Shadow Slave. Only answer questions about the novel."
+            content: "You are an expert on the web novel 'Shadow Slave' by GuiltyThree. Only answer questions about this specific novel and its universe. If the question is not about this book, politely say you can only answer questions about 'Shadow Slave' by GuiltyThree."
           },
           { role: "user", content: userMessage }
         ],

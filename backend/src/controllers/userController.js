@@ -73,4 +73,105 @@ router.post('/login', async (req, res) => {
     }
 });
 
+// Update username
+router.put('/update-username', async (req, res) => {
+    const { email, password, newUsername } = req.body || {};
+    if (!email || !password || !newUsername) {
+        return res.status(400).json({ 
+            success: false, 
+            message: 'Email, password and new username are required.' 
+        });
+    }
+
+    try {
+        // Find the user
+        const user = await User.findOne({ email });
+        if (!user) {
+            return res.status(404).json({
+                success: false,
+                message: 'User not found'
+            });
+        }
+
+        // Verify password
+        if (user.password !== password) {
+            return res.status(401).json({
+                success: false,
+                message: 'Invalid credentials'
+            });
+        }
+
+        // Check if new username is already taken
+        const existingUser = await User.findOne({ username: newUsername });
+        if (existingUser && existingUser._id.toString() !== user._id.toString()) {
+            return res.status(400).json({
+                success: false,
+                message: 'Username is already taken'
+            });
+        }
+
+        // Update the username
+        user.username = newUsername;
+        await user.save();
+
+        res.status(200).json({
+            success: true,
+            message: 'Username updated successfully',
+            data: {
+                username: user.username,
+                email: user.email
+            }
+        });
+    } catch (error) {
+        console.error('Update username error:', error);
+        res.status(500).json({
+            success: false,
+            message: 'Something went wrong',
+            error: error.message
+        });
+    }
+});
+
+// Delete user account
+router.delete('/delete-account', async (req, res) => {
+    const { email, password } = req.body || {};
+    if (!email || !password) {
+        return res.status(400).json({ success: false, message: 'Email and password are required for account deletion.' });
+    }
+
+    try {
+        // Find the user
+        const user = await User.findOne({ email });
+        if (!user) {
+            return res.status(404).json({
+                success: false,
+                message: 'User not found'
+            });
+        }
+
+        // Verify password
+        if (user.password !== password) {
+            return res.status(401).json({
+                success: false,
+                message: 'Invalid credentials'
+            });
+        }
+
+        // Delete the user
+        await User.deleteOne({ _id: user._id });
+
+        res.status(200).json({
+            success: true,
+            message: 'Account deleted successfully'
+        });
+    } catch (error) {
+        console.error('Delete account error:', error);
+        res.status(500).json({
+            success: false,
+            message: 'Something went wrong',
+            error: error.message
+        });
+    }
+});
+
 module.exports = router;
